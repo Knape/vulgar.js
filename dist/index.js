@@ -1,4 +1,9 @@
-const vulgar = {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var vulgar = {
   'u00BD': {
     fraction: '1/2',
     vulgar: '½'
@@ -53,12 +58,12 @@ function convertFraction(fraction) {
   return result.toFixed(2);
 }
 
-export const toFraction = (string) => {
+var toFraction = exports.toFraction = function toFraction(string) {
   if (string === null || typeof string === 'undefined') {
     return [];
   }
-  const stringLength = string.length;
-  const newString = [];
+  var stringLength = string.length;
+  var newString = [];
 
   for (var n = 0; n < stringLength; n++) {
     var s = string.charCodeAt(n).toString(16).toUpperCase();
@@ -78,7 +83,7 @@ export const toFraction = (string) => {
   return newString.join('');
 };
 
-export const toDecimal = (fraction) => {
+var toDecimal = exports.toDecimal = function toDecimal(fraction) {
   if (fraction === null || typeof fraction === 'undefined') throw 'Please supply a fractal';
   return fraction.replace(/((\d*)\/(\d*))/g, function (_, f) {
     return convertFraction(f);
