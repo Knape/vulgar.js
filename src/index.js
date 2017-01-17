@@ -1,39 +1,10 @@
-const vulgar = {
-  'u00BD': {
-    fraction: '1/2',
-    vulgar: '½'
-  },
-  'u2153': {
-    fraction: '1/3',
-    vulgar: '⅓'
-  },
-  'u2154': {
-    fraction: '2/3',
-    vulgar: '⅔'
-  },
-  'u00BC': {
-    fraction: '1/4',
-    vulgar: '¼'
-  },
-  'u00BE': {
-    fraction: '3/4',
-    vulgar: '¾'
-  },
-  'u215B': {
-    fraction: '1/8',
-    vulgar: '⅛'
-  },
-  'U215E': {
-    fraction: '7/8',
-    vulgar: '⅞'
-  }
-};
+import vulgar from './vulgar';
 
-function convertFraction(fraction) {
-  var result,
-      wholeNum = 0,
-      frac,
-      deci = 0;
+const convertFraction = (fraction) => {
+  let result;
+  let wholeNum = 0;
+  let frac;
+  let deci = 0;
   if (fraction.search('/') >= 0) {
     if (fraction.search('-') >= 0) {
       wholeNum = fraction.split('-');
@@ -51,7 +22,7 @@ function convertFraction(fraction) {
     result = +fraction;
   }
   return result.toFixed(2);
-}
+};
 
 export const toFraction = (string) => {
   if (string === null || typeof string === 'undefined') {
@@ -60,15 +31,15 @@ export const toFraction = (string) => {
   const stringLength = string.length;
   const newString = [];
 
-  for (var n = 0; n < stringLength; n++) {
-    var s = string.charCodeAt(n).toString(16).toUpperCase();
+  for (let n = 0; n < stringLength; n++) {
+    let s = string.charCodeAt(n).toString(16).toUpperCase();
 
     while (s.length < 4) {
       s = '0' + s;
     }
     s = 'u' + s;
     if (vulgar[s]) {
-      var needsSpace = string.charAt(n - 1) === ' ' || n === 0 ? '' : ' ';
+      const needsSpace = string.charAt(n - 1) === ' ' || n === 0 ? '' : ' ';
       newString.push(needsSpace + vulgar[s].fraction);
     } else {
       newString.push(string.charAt(n));
@@ -79,8 +50,10 @@ export const toFraction = (string) => {
 };
 
 export const toDecimal = (fraction) => {
-  if (fraction === null || typeof fraction === 'undefined') throw 'Please supply a fractal';
-  return fraction.replace(/((\d*)\/(\d*))/g, function (_, f) {
+  if (fraction === null || typeof fraction === 'undefined') {
+    throw new Error('Please supply a fractal');
+  }
+  return fraction.replace(/((\d*)\/(\d*))/g, (_, f) => {
     return convertFraction(f);
   });
 };
