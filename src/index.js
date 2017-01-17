@@ -26,7 +26,7 @@ const convertFraction = (fraction) => {
 
 export const toFraction = (string) => {
   if (string === null || typeof string === 'undefined') {
-    return [];
+    throw new Error('Please supply a vulgar or fractal');
   }
   const stringLength = string.length;
   const newString = [];
@@ -51,9 +51,10 @@ export const toFraction = (string) => {
 
 export const toDecimal = (fraction) => {
   if (fraction === null || typeof fraction === 'undefined') {
-    throw new Error('Please supply a fractal');
+    throw new Error('Please supply a vulgar or fractal');
   }
-  return fraction.replace(/((\d*)\/(\d*))/g, (_, f) => {
+  const parsedToFraction = toFraction(fraction);
+  return parsedToFraction.replace(/((\d*)\/(\d*))/g, (_, f) => {
     return convertFraction(f);
   });
 };

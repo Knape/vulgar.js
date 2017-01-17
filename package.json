@@ -1,15 +1,23 @@
 {
-  "name": "fraction",
+  "name": "vulgar.js",
   "version": "0.5.0",
-  "description": "Tiny fractions library in javascript",
+  "description": "Tiny vulgar and fraction library in javascript",
   "main": "lib/index.js",
   "scripts": {
     "build": "node_modules/.bin/babel src/ --out-dir lib/",
     "test": "node_modules/.bin/mocha --require babel-core/register ./test/",
     "lint": "node_modules/.bin/eslint -c .eslintrc src/"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Philip Knape",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/airbnb/javascript.git"
+  },
+  "bugs": {
+    "url": "https://github.com/airbnb/javascript/issues"
+  },
+  "homepage": "https://github.com/airbnb/javascript",
+  "license": "MIT",
   "devDependencies": {
     "babel": "~6.5.2",
     "babel-cli": "^6.7.7",
