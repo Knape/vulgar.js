@@ -15,7 +15,7 @@ npm install --save vulgar.js
 Vulgar.js is a tiny util library for converting vulgars to either fractions or decimals.
 
 ```js
-const vulgar = import 'vulgar.js';
+import vulgar from 'vulgar.js';
 vulgar.toFraction('¼'); // => '1/4'
 vulgar.toDecimal('¼'); // => '0.25'
 ```
