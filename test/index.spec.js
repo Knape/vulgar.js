@@ -3,12 +3,22 @@ const expect = require('chai').expect;
 
 describe('Util functions', () => {
   describe('vulgar to decimal', () => {
-    it('should convert a string containing a vulgar to a Number', () => {
+    it('should convert a string containing a vulgar to a Decimal', () => {
       expect(vulgar.toDecimal('1/2'))
       .to.equal('0.50');
     });
 
-    it('should convert a feraction to a Number but keep the other words', () => {
+    it('should convert a feraction to a Decimal', () => {
+      expect(vulgar.toDecimal('⅚'))
+      .to.equal('0.83');
+    });
+
+    it('should convert a feraction to a Decimal but keep the other words', () => {
+      expect(vulgar.toDecimal('½ hello'))
+      .to.equal('0.50 hello');
+    });
+
+    it('should convert a feraction to a Decimal but keep the other words', () => {
       expect(vulgar.toDecimal('½ hello'))
       .to.equal('0.50 hello');
     });
