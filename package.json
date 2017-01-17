@@ -11,12 +11,12 @@
   "author": "Philip Knape",
   "repository": {
     "type": "git",
-    "url": "https://github.com/airbnb/javascript.git"
+    "url": "https://github.com/Knape/vulgar.js.git"
   },
   "bugs": {
-    "url": "https://github.com/airbnb/javascript/issues"
+    "url": "https://github.com/Knape/vulgar.js/issues"
   },
-  "homepage": "https://github.com/airbnb/javascript",
+  "homepage": "https://github.com/Knape/vulgar.js",
   "license": "MIT",
   "devDependencies": {
     "babel": "~6.5.2",
