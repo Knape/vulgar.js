@@ -19,8 +19,8 @@ describe('Util functions', () => {
     });
 
     it('should convert a feraction to a Decimal but keep the other words', () => {
-      expect(vulgar.toDecimal('½ hello'))
-      .to.equal('0.50 hello');
+      expect(vulgar.toDecimal('¼ cups of milk'))
+      .to.equal('0.25 cups of milk');
     });
 
     it('should return other as it is', () => {
@@ -45,9 +45,9 @@ describe('Util functions', () => {
       .to.equal('1/2 1/2');
     });
 
-    it('should convert "½ hello" to "1/2 hello" and still keep the word "hello"', () => {
-      expect(vulgar.toFraction('½ hello'))
-      .to.equal('1/2 hello');
+    it('should convert "½ liter of water" to "1/2 liter of water" and still keep the word "liter of water"', () => {
+      expect(vulgar.toFraction('½ liter of water'))
+      .to.equal('1/2 liter of water');
     });
 
     it('should convert a fraction a fraction', () => {
