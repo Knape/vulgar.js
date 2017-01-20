@@ -1,6 +1,6 @@
 {
   "name": "vulgar.js",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "Tiny vulgar and fraction library in javascript",
   "main": "lib/index.js",
   "scripts": {
