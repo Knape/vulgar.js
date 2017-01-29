@@ -1,12 +1,5 @@
 engines:
-  rubocop:
-    enabled: true
-    #checks:
-    #	Rubocop/Metrics/ClassLength:
-    #  	enabled: false
   eslint:
-    enabled: true
-  csslint:
     enabled: true
   duplication:
     enabled: true
