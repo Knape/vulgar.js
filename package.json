@@ -2,13 +2,15 @@
   "name": "vulgar.js",
   "version": "0.6.1",
   "description": "Tiny vulgar and fraction library in javascript",
+  "keywords": ["nodejs", "browser", "vulgar", "fraction", "decimal"],
   "main": "lib/index.js",
   "scripts": {
     "build": "node_modules/.bin/babel src/ --out-dir lib/",
     "test": "node_modules/.bin/mocha --require babel-core/register ./test/",
     "lint": "node_modules/.bin/eslint -c .eslintrc src/"
   },
-  "author": "Philip Knape",
+  "author": "Philip Knape <philip.knape@gmail.com>",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/Knape/vulgar.js.git"
