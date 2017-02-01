@@ -8,17 +8,17 @@ describe('Util functions', () => {
       .to.equal('0.50');
     });
 
-    it('should convert a feraction to a Decimal', () => {
+    it('should convert a fraction to a Decimal', () => {
       expect(vulgar.toDecimal('⅚'))
       .to.equal('0.83');
     });
 
-    it('should convert a feraction to a Decimal but keep the other words', () => {
+    it('should convert a fraction to a Decimal but keep the other words', () => {
       expect(vulgar.toDecimal('½ hello'))
       .to.equal('0.50 hello');
     });
 
-    it('should convert a feraction to a Decimal but keep the other words', () => {
+    it('should convert a fraction to a Decimal but keep the other words', () => {
       expect(vulgar.toDecimal('¼ cups of milk'))
       .to.equal('0.25 cups of milk');
     });
@@ -50,7 +50,7 @@ describe('Util functions', () => {
       .to.equal('1/2 liter of water');
     });
 
-    it('should convert a fraction a fraction', () => {
+    it('should convert a fraction to a fraction', () => {
       expect(vulgar.toFraction('1/2'))
       .to.equal('1/2');
     });
