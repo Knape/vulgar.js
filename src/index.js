@@ -1,26 +1,21 @@
 import vulgar from './vulgar';
 
 const convertFraction = (fraction) => {
-  let result;
   let wholeNum = 0;
   let frac;
   let deci = 0;
-  if (fraction.search('/') >= 0) {
-    if (fraction.search('-') >= 0) {
-      wholeNum = fraction.split('-');
-      frac = wholeNum[1];
-      wholeNum = parseInt(wholeNum, 10);
-    } else {
-      frac = fraction;
-    }
-    if (fraction.search('/') >= 0) {
-      frac = frac.split('/');
-      deci = parseInt(frac[0], 10) / parseInt(frac[1], 10);
-    }
-    result = wholeNum + deci;
+  if (fraction.search('-') >= 0) {
+    wholeNum = fraction.split('-');
+    frac = wholeNum[1];
+    wholeNum = parseInt(wholeNum, 10);
   } else {
-    result = +fraction;
+    frac = fraction;
   }
+  if (fraction.search('/') >= 0) {
+    frac = frac.split('/');
+    deci = parseInt(frac[0], 10) / parseInt(frac[1], 10);
+  }
+  const result = wholeNum + deci;
   return result.toFixed(2);
 };
 
@@ -31,7 +26,7 @@ export const toFraction = (string) => {
   const stringLength = string.length;
   const newString = [];
 
-  for (let n = 0; n < stringLength; n++) {
+  for (let n = 0; n < stringLength; n += 1) {
     let s = string.charCodeAt(n).toString(16).toUpperCase();
 
     while (s.length < 4) {
@@ -49,12 +44,17 @@ export const toFraction = (string) => {
   return newString.join('');
 };
 
-export const toDecimal = (fraction) => {
+export const toDecimal = (fraction, onlyfraction = false, cb = null) => {
   if (fraction === null || typeof fraction === 'undefined') {
     throw new Error('Please supply a vulgar or fractal');
   }
+
   const parsedToFraction = toFraction(fraction);
-  return parsedToFraction.replace(/((\d*)\/(\d*))/g, (_, f) => {
-    return convertFraction(f);
-  });
+  const regex = /((\d*)(-(\d*))?\/(\d*))/g;
+  const matched = onlyfraction ? parsedToFraction.match(regex) : parsedToFraction;
+  const parsed = onlyfraction
+    ? matched.map(convertFraction)
+    : matched.replace(regex, (_, f) => (convertFraction(f)));
+
+  return (typeof cb === 'function' && onlyfraction) ? parsed.map(cb) : parsed;
 };
