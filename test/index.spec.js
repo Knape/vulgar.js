@@ -8,6 +8,16 @@ describe('Util functions', () => {
       .to.equal('0.50');
     });
 
+    it('should convert a string containing a full number and a vulgar to a Decimal', () => {
+      expect(vulgar.toDecimal('1-1/2'))
+      .to.equal('1.50');
+    });
+
+    it('should convert a string containing a full number and a vulgar to a Decimal', () => {
+      expect(vulgar.toDecimal('1-2/2'))
+      .to.equal('2.00');
+    });
+
     it('should convert a fraction to a Decimal', () => {
       expect(vulgar.toDecimal('⅚'))
       .to.equal('0.83');
@@ -26,6 +36,36 @@ describe('Util functions', () => {
     it('should return other as it is', () => {
       expect(vulgar.toDecimal('hello'))
       .to.equal('hello');
+    });
+
+    it('should throw an error if we dont pass a string to the method', () => {
+      expect(() => vulgar.toDecimal())
+      .to.throw('Please supply a vulgar or fractal');
+    });
+
+    it('should convert a fraction to a decimal and only return it as an array', () => {
+      expect(vulgar.toDecimal('½ hello', true))
+      .to.deep.equal(['0.50']);
+    });
+
+    it('should convert a fractions to decimals but return them as an array', () => {
+      expect(vulgar.toDecimal('½ ¼', true))
+      .to.deep.equal(['0.50', '0.25']);
+    });
+
+    it('should convert a fractions to decimals and handle callback', () => {
+      expect(vulgar.toDecimal('½ ¼', true, n => parseFloat(n, 10)))
+      .to.deep.equal([0.50, 0.25]);
+    });
+
+    it('should convert a string containing a full number and a vulgar to a Decimal', () => {
+      expect(vulgar.toDecimal('1-2/2', true, n => parseInt(n, 10)))
+      .to.deep.equal([2]);
+    });
+
+    it('should convert a string containing a full number and a vulgar to a Decimal', () => {
+      expect(vulgar.toDecimal('1-2/2', false, n => parseInt(n, 10)))
+      .to.equal('2.00');
     });
   });
 
@@ -58,6 +98,11 @@ describe('Util functions', () => {
     it('should return other as it is', () => {
       expect(vulgar.toFraction('hello'))
       .to.equal('hello');
+    });
+
+    it('should throw an error if we dont pass a string to the method', () => {
+      expect(() => vulgar.toFraction())
+      .to.Throw('Please supply a vulgar or fractal');
     });
   });
 });
