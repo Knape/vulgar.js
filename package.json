@@ -1,8 +1,14 @@
 {
   "name": "vulgar.js",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "description": "Tiny vulgar and fraction library in javascript",
-  "keywords": ["nodejs", "browser", "vulgar", "fraction", "decimal"],
+  "keywords": [
+    "nodejs",
+    "browser",
+    "vulgar",
+    "fraction",
+    "decimal"
+  ],
   "main": "lib/index.js",
   "scripts": {
     "build": "node_modules/.bin/babel src/ --out-dir lib/",
@@ -21,7 +27,6 @@
     "url": "https://github.com/Knape/vulgar.js/issues"
   },
   "homepage": "https://github.com/Knape/vulgar.js",
-  "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.22.2",
     "babel-core": "^6.22.1",
