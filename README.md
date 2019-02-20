@@ -34,9 +34,18 @@ vulgar.toDecimal('¼ cups of milk'); // => '0.25 cups of milk'
 
 At the moment vulgar.js has two methods, one for converting vulgar to fractions and one for converting either vulgar or fraction to decimal.
 
-### `toFraction(string)`
+### `toFraction(string, [onlyFraction])`
 
+##### `string`
 Takes a string containing a vulgar and convert it to a fraction. The method will always return its original text with only the vulgar converted
+
+##### `onlyFraction`
+Optional argument, pass `true` to only return the converted decimals as an array
+
+```js
+vulgar.toFraction('¼ foo'); // => '1/4 foo'
+vulgar.toFraction('¼ foo', true); // => ['1/4']
+```
 
 ### `toDecimal(string, [onlyFraction], [callback])`
 

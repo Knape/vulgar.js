@@ -19,12 +19,17 @@ const convertFraction = (fraction) => {
   return result.toFixed(2);
 };
 
-export const toFraction = (string) => {
+const match = vulgars => string => (
+  vulgars.some(v => string === v)
+);
+
+export const toFraction = (string, onlyfraction = false) => {
   if (string === null || typeof string === 'undefined') {
     throw new Error('Please supply a vulgar or fractal');
   }
   const stringLength = string.length;
   const newString = [];
+  const vulgars = [];
 
   for (let n = 0; n < stringLength; n += 1) {
     let s = string.charCodeAt(n).toString(16).toUpperCase();
@@ -35,13 +40,16 @@ export const toFraction = (string) => {
     s = 'u' + s;
     if (vulgar[s]) {
       const needsSpace = string.charAt(n - 1) === ' ' || n === 0 ? '' : ' ';
+      vulgars.push(vulgar[s].fraction);
       newString.push(needsSpace + vulgar[s].fraction);
     } else {
       newString.push(string.charAt(n));
     }
   }
 
-  return newString.join('');
+  return onlyfraction
+    ? newString.filter(match(vulgars))
+    : newString.join('');
 };
 
 export const toDecimal = (fraction, onlyfraction = false, cb = null) => {
